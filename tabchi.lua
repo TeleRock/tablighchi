@@ -1,5 +1,5 @@
--- @TeleDiamondCh
-
+-- @RockTeam
+--koofte123
 function is_sudo(msg)
   local sudoers = {}
   table.insert(sudoers, tonumber(redis:get("tabchi:" .. tabchi_id .. ":fullsudo")))
@@ -120,7 +120,7 @@ function process(msg)
     }
     if msg.text:match("^[!/#]pm") and is_sudo(msg) and #matches == 3 then
       tdcli.sendMessage(tonumber(matches[2]), 0, 1, matches[3], 1, "md")
-      return "_پیام شما ارسال شد_"
+      return "پیام شما ارسال شد"
     end
   end
   do
@@ -130,7 +130,7 @@ function process(msg)
     if msg.text:match("^[!/#]setanswer") and is_sudo(msg) and #matches == 3 then
       redis:hset("tabchi:" .. tabchi_id .. ":answers", matches[2], matches[3])
       redis:sadd("tabchi:" .. tabchi_id .. ":answerslist", matches[2])
-      return "_پاسخ برای_ " .. matches[2] .. " >> " .. matches[3]
+      return "پاسخ برای " .. matches[2] .. " >> " .. matches[3]
     end
   end
   do
@@ -227,7 +227,7 @@ _اضافه کردن مخاطبين ربات به گروه_
 _دريافت لينک هاي ذخيره شده توسط ربات_
 */contactlist*
 _دريافت مخاطبان ذخيره شده توسط ربات_
-*Join* _us_ >> @TeleDiamondCh
+*Join* _us_ >> @RockTeam
 ]]
     return text
   end
